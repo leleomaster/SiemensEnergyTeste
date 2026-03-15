@@ -1,0 +1,19 @@
+<Solution>
+  <Folder Name="/1-Presentation/">
+    <Project Path="CleanArchitecture.WebApi/SiemensEnergyTeste.WebApi.csproj" />
+  </Folder>
+  <Folder Name="/2-Core/">
+    <Project Path="CleanArchitecture.Application/SiemensEnergyTeste.Application.csproj" />
+    <Project Path="CleanArchitecture.Domain/SiemensEnergyTeste.Domain.csproj" />
+  </Folder>
+  <Folder Name="/3-Intrastructure/">
+    <Project Path="CleanArchitecture.Persistence/SiemensEnergyTeste.Persistence.csproj" />
+  </Folder>
+  <Folder Name="/4-Test/">
+    <Project Path="CleanArchitecture.UnitTest/SiemensEnergyTeste.UnitTest.csproj" />
+  </Folder>
+  <Folder Name="/Documentacao/">
+    <File Path="ArquiteturaLimpa.png" />
+    <File Path="Relacionamento_e_dependencia_entre_projetos.png" />
+  </Folder>
+</Solution>

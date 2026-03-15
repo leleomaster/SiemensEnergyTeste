@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SiemensEnergyTeste.Domain\SiemensEnergyTeste.Domain.csproj" />
+    <ProjectReference Include="..\SiemensEnergyTeste.Persistence\SiemensEnergyTeste.Persistence.csproj" />
+  </ItemGroup>
+
+</Project>
