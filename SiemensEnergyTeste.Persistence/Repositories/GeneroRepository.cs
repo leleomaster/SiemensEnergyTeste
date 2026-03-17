@@ -28,7 +28,10 @@ namespace SiemensEnergyTeste.Persistence.Repositories
 
         public async Task<IEnumerable<GeneroEntity>> GetAllAsync()
         {
-            return await _context.Set<GeneroEntity>().ToListAsync();
+            return await _context.Set<GeneroEntity>()
+                .Include(g => g.Livros)
+                .ThenInclude(l => l.Autor)
+                .ToListAsync();
         }
 
         public async Task<GeneroEntity?> GetByIdAsync(Guid id)

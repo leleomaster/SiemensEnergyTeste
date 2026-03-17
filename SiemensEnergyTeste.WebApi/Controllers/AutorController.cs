@@ -19,7 +19,6 @@ namespace SiemensEnergyTeste.WebApi.Controllers
 
 
         [HttpGet]
-        [Route("autor")]
         public async Task<IActionResult> Obter(Guid id)
         {
             try
@@ -50,7 +49,7 @@ namespace SiemensEnergyTeste.WebApi.Controllers
 
                 if (autors.Any())
                 {
-                    var autorsViewModel = autors.Adapt<AutorViewModels>();
+                    var autorsViewModel = autors.Adapt<List<AutorViewModels>>();
                     return Ok(autorsViewModel);
                 }
                 return StatusCode(404, $"Nenhum autor encontrado");

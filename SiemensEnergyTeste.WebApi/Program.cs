@@ -15,6 +15,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
+
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
@@ -70,6 +71,17 @@ builder.Services.AddScoped<IMapper, ServiceMapper>();
 
 builder.Services.RegistrarMapeamento();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAngularApp",
+        policy =>
+        {
+            policy.WithOrigins("http://localhost:4200") // URL do Angular
+                  .AllowAnyHeader()
+                  .AllowAnyMethod();
+        });
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -91,6 +103,8 @@ else
     // Captura exceções e retorna 500
     app.UseExceptionHandler();
 }
+
+app.UseCors("AllowAngularApp");
 
 //app.UseHttpsRedirection();
 

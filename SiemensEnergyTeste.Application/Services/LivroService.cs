@@ -29,7 +29,7 @@ namespace SiemensEnergyTeste.Application.Services
         public async Task<IEnumerable<LivroDto>> GetAllAsync()
         {
             var listaLivroesEntity = await _livroRepository.GetAllAsync();
-            var listaLivroesViewModel = listaLivroesEntity.Adapt<IEnumerable<LivroDto>>();
+            var listaLivroesViewModel = listaLivroesEntity.Adapt<List<LivroDto>>();
 
             return listaLivroesViewModel;
         }

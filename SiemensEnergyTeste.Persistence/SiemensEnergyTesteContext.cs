@@ -16,6 +16,7 @@ namespace SiemensEnergyTeste.Persistence
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<LivroEntity>()
+
                 .HasOne(l => l.Autor)
                 .WithMany(a => a.Livros)
                 .HasForeignKey(l => l.AutorId);

@@ -19,7 +19,6 @@ namespace SiemensEnergyTeste.WebApi.Controllers
 
 
         [HttpGet]
-        [Route("genero")]
         public async Task<IActionResult> Obter(Guid id)
         {
             try
@@ -50,7 +49,7 @@ namespace SiemensEnergyTeste.WebApi.Controllers
 
                 if (generos.Any())
                 {
-                    var generosViewModel = generos.Adapt<GeneroViewModels>();
+                    var generosViewModel = generos.Adapt<List<GeneroViewModels>>();
                     return Ok(generosViewModel);
                 }
                 return StatusCode(404, $"Nenhum genero encontrado");

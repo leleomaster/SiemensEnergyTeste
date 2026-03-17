@@ -31,7 +31,7 @@ namespace SiemensEnergyTeste.Application.Services
         public async Task<IEnumerable<GeneroDto>> GetAllAsync()
         {
             var listaGeneroesEntity = await _generoRepository.GetAllAsync();
-            var listaGeneroesViewModel = listaGeneroesEntity.Adapt<IEnumerable<GeneroDto>>();
+            var listaGeneroesViewModel = listaGeneroesEntity.Adapt<List<GeneroDto>>();
 
             return listaGeneroesViewModel;
         }

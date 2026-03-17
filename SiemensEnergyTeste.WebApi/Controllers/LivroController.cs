@@ -20,7 +20,6 @@ namespace SiemensEnergyTeste.WebApi.Controllers
 
 
         [HttpGet]
-        [Route("livro")]
         public async Task<IActionResult> Obter(Guid id)
         {
             try
@@ -51,7 +50,7 @@ namespace SiemensEnergyTeste.WebApi.Controllers
 
                 if (livros.Any())
                 {
-                    var livrosViewModel = livros.Adapt<LivroViewModels>();
+                    var livrosViewModel = livros.Adapt<List<LivroViewModels>>();
                     return Ok(livrosViewModel);
                 }
                 return StatusCode(404, $"Nenhum livro encontrado");

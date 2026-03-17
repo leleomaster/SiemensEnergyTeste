@@ -30,7 +30,7 @@ namespace SiemensEnergyTeste.Application.Services
         public async Task<IEnumerable<AutorDto>> GetAllAsync()
         {
             var listaAutoresEntity = await _autorRepository.GetAllAsync();
-            var listaAutoresViewModel = listaAutoresEntity.Adapt<IEnumerable<AutorDto>>();
+            var listaAutoresViewModel = listaAutoresEntity.Adapt<List<AutorDto>>();
 
             return listaAutoresViewModel;
         }

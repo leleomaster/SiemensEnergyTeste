@@ -1,0 +1,80 @@
+<div class="row d-flex justify-content-center border border-primary mt-4">
+  <div class="col-12 col-sm-6">
+    <form [formGroup]="formLivro" (ngSubmit)="salvar()">
+      <div class="mb-3 row">
+        <div class="col-12">
+          <label for="tituloFormControlInput1" class="form-label">Título do Livro</label>
+          <input type="text" formControlName="titulo" placeholder="Título (min 3 caracteres)" class="form-control max-wi"
+            id="tituloFormControlInput1">
+
+          @if(formLivro.get('titulo')?.touched && formLivro.get('titulo')?.errors?.['minlength']){
+          <p>
+            Título precisa ter pelo menos 3 caracteres.
+          </p>
+          }
+        </div>
+
+        <div>
+          <label>Gênero:</label>
+          <select class="form-select" aria-label="Default select example" formControlName="genero">
+            <option [ngValue]="null" disabled>Selecione um gênero</option>
+            @for (g of generos; track g.id) {
+            <option [ngValue]="g">{{ g.nome }}</option>
+            }
+          </select>
+        </div>
+        
+        <div>
+          <label>Autor:</label>
+          <select class="form-select" aria-label="Default select example" formControlName="autor">
+            <option [ngValue]="null" disabled>Selecione um autor</option>
+            @for (a of autores; track a.id) {
+            <option [ngValue]="a">{{ a.nome }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+
+      <div class="mb-3">
+        <button class="btn btn-primary" type="submit" [disabled]="formLivro.invalid">
+          {{ editando ? 'Atualizar' : 'Inserir' }}
+        </button>
+        @if(editando){
+        <button class="btn btn-primary" (click)="resetForm()">Cancelar</button>
+        }
+      </div>
+    </form>
+
+    <table class="table table-striped table-hover table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Livro</th>
+          <th scope="col">Autor</th>
+          <th scope="col">Genero</th>
+          <th scope="col">Selecionar</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        @for (livro of livros; track livro.id) {
+        <tr>
+          <td>{{livro.titulo}}</td>
+          <td>{{livro.autor?.nome}}</td>
+          <td>{{livro.genero?.nome}}</td>
+          <td>
+            <button class="btn btn-primary  me-3" (click)="editar(livro)">Editar</button>
+            <button class="btn btn-danger" (click)="deletar(livro.id)">Excluir</button>
+          </td>
+        </tr>
+        } @empty {
+        <tr>
+          <td colspan="4">
+            Nenhum Livro encontrado.
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>

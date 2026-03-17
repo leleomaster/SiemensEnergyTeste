@@ -4,7 +4,7 @@ using SiemensEnergyTeste.Domain.Interfaces.Repositories;
 
 namespace SiemensEnergyTeste.Persistence.Repositories
 {
-    public class LivroRepository: ILivroRepository
+    public class LivroRepository : ILivroRepository
     {
         private readonly SiemensEnergyTesteContext _context;
 
@@ -28,7 +28,10 @@ namespace SiemensEnergyTeste.Persistence.Repositories
 
         public async Task<IEnumerable<LivroEntity>> GetAllAsync()
         {
-            return await _context.Set<LivroEntity>().ToListAsync();
+            return await _context.Set<LivroEntity>()
+                .Include(l => l.Autor)
+                .Include(l => l.Genero)
+                .ToListAsync();
         }
 
         public async Task<LivroEntity?> GetByIdAsync(Guid id)
