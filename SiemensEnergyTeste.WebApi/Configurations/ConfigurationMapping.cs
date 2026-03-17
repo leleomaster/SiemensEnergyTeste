@@ -38,11 +38,7 @@ namespace SiemensEnergyTeste.WebApi.Configurations
             #region do back para o front
             TypeAdapterConfig<LivroEntity, LivroDto>.NewConfig();
             TypeAdapterConfig<LivroViewModels, LivroDto>.NewConfig();
-
-            TypeAdapterConfig<GeneroEntity, GeneroDto>
-                .NewConfig()
-                .Map(dest => dest.Livros, src => src.Livros.Adapt<ICollection<LivroDto>>());
-
+                        
             TypeAdapterConfig<GeneroDto, GeneroViewModels>
                 .NewConfig()
                 .Map(dest => dest.Livros, src => src.Livros.Adapt<ICollection<LivroViewModels>>());
@@ -61,15 +57,6 @@ namespace SiemensEnergyTeste.WebApi.Configurations
             TypeAdapterConfig<GeneroEntity, GeneroDto>
                 .NewConfig()
                 .Map(dest => dest.Livros, src => src.Livros.Adapt<ICollection<LivroDto>>());
-
-            //TypeAdapterConfig<IEnumerable<LivroEntity>, IEnumerable<LivroDto>>.NewConfig();
-            //TypeAdapterConfig<IEnumerable<LivroViewModels>, IEnumerable<LivroDto>>.NewConfig();
-
-            //TypeAdapterConfig<IEnumerable<GeneroEntity>, IEnumerable<GeneroDto>>.NewConfig();
-            //TypeAdapterConfig<IEnumerable<GeneroDto>, IEnumerable<GeneroViewModels>>.NewConfig();
-
-            //TypeAdapterConfig<IEnumerable<AutorEntity>, IEnumerable<AutorDto>>.NewConfig();
-            //TypeAdapterConfig<IEnumerable<AutorDto>, IEnumerable<AutorViewModels>>.NewConfig();
 
             #endregion
 
